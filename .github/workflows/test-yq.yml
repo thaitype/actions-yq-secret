@@ -1,0 +1,33 @@
+name: Test Yq Action with Secret
+on: [push]
+permissions:
+  contents: read
+
+jobs:
+
+  test:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get test
+        id: secret
+        uses: ./
+        with:
+          cmd: yq '.secret' examples/data.yml
+      - run: echo "${{ steps.secret.outputs.result  }}"
+
+  test-secret:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get test
+        id: secret
+        uses: ./
+        with:
+          cmd: yq '.secret' examples/data.yml
+          sensitive: true
+      - run: echo "${{ steps.secret.outputs.result  }}"

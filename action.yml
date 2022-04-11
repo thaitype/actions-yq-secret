@@ -1,0 +1,22 @@
+name: 'yq secret'
+description: 'yq wrapper for hiding secret'
+branding:
+  icon: command
+  color: gray-dark
+inputs:
+  cmd:
+    description: 'The Command which should be run'
+    required: true
+  sensitive:
+    description: 'The option is hiding output or not'
+    required: false
+    default: false
+outputs:
+  result:
+    description: "The complete result from the yq command being run"
+runs:
+  using: 'docker'
+  image: 'docker/Dockerfile'
+  args:
+    - ${{ inputs.cmd }}
+    - ${{ inputs.sensitive }}

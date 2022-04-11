@@ -7,4 +7,17 @@ yq is a portable command-line YAML, JSON and XML processor
 - Main Repo: https://github.com/mikefarah/yq/
 - yq documentation: https://mikefarah.gitbook.io/yq/
 
+```yml
+steps:
+  - name: Get test
+    id: secret
+    uses: mildronize/actions-yq-secret@main
+    with:
+      cmd: yq '.secret' examples/data.yml
+      sensitive: true
+  - run: echo "${{ steps.secret.outputs.result  }}"
+```
 
+## Todo
+
+- [ ] Create a Pull Request to [mikefarah/yq](https://github.com/mikefarah/yq/)

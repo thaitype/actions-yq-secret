@@ -11,7 +11,7 @@ yq is a portable command-line YAML, JSON and XML processor
 steps:
   - name: Get test
     id: secret
-    uses: mildronize/actions-yq-secret@main
+    uses: mildronize/actions-yq-secret@v1
     with:
       cmd: yq '.secret' examples/data.yml
       sensitive: true

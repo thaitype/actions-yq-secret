@@ -14,4 +14,4 @@ then
 else
     echo "::debug::\$RESULT: $RESULT"
 fi
-echo ::set-output name=result::"$RESULT"
+echo "result=$RESULT" >> $GITHUB_OUTPUT

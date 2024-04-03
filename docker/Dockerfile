@@ -2,7 +2,8 @@ FROM mikefarah/yq:4
 
 COPY entrypoint.sh /entrypoint.sh
 
-# this seems to be the default user in github actions
-USER 1001
+# Fix permissions issues when attempting to read/write
+# https://github.com/mikefarah/yq/?tab=readme-ov-file#running-as-root
+USER root
 
 ENTRYPOINT ["/entrypoint.sh"]
